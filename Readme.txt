@@ -12,4 +12,7 @@ http://plugins.jquery.com/soap/
 https://msdn.microsoft.com/en-us/library/ff649690.aspx
 http://blog.falafel.com/implement-step-step-generic-repository-pattern-c/
 http://www.asp.net/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
+http://www.codeproject.com/Articles/29271/Design-pattern-Inversion-of-control-and-Dependency
+http://www.codeproject.com/Articles/29444/Design-Pattern-IOC-and-DI
+http://www.codeproject.com/Articles/135114/Dependency-Injection-with-StructureMap-in-ASP-NET
 
