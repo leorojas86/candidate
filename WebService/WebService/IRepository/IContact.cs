@@ -10,7 +10,7 @@ namespace IRepository
     {
         #region Properties
         
-        int ID { get; set; }
+        int Id { get; set; }
 
         string Name { get; set; }
 
