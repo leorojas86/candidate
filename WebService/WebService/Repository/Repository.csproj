@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactsDAL.cs" />
     <Compile Include="DatabaseContactsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataProject\DataProject.csproj">
+      <Project>{58593c9a-4a54-4cb5-b29e-ccd82c3a38cd}</Project>
+      <Name>DataProject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IRepository\IRepository.csproj">
       <Project>{68244ee0-671b-4072-b49a-0cd990ab0d14}</Project>
       <Name>IRepository</Name>

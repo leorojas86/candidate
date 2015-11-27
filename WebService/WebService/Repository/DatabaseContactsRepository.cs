@@ -5,41 +5,60 @@ using System.Text;
 using System.Threading.Tasks;
 using IRepository;
 using System.Data.Entity;
+using DataProject;
 
 namespace Repository
 {
-    public class DatabaseContactsRepository : DbContext, IContactsRepository
+    public class DatabaseContactsRepository : IContactsRepository<IContact>
     {
-        public DbSet<IContact> Contacts { get; set; }
+        #region Variables
+
+        private ContactsDAL _dal = new ContactsDAL();
+
+        #endregion
+
+        #region Methods
 
         public void Add(IContact contact)
         {
-            Contacts.Add(contact);
-            SaveChanges();
+            Add((Contact)contact);
+        }
+
+        public void Add(Contact contact)
+        {
+            _dal.Contacts.Add(contact);
+            _dal.SaveChanges();
         }
 
         public void Update(IContact contact)
         {
+            Update((Contact)contact);
+        }
+
+        public void Update(Contact contact)
+        {
             //Contact instante can be different than the coresponding instance in the DbContext
-            IContact dbContact = Contacts.Find(contact.Id);
+            IContact dbContact = _dal.Contacts.Find(contact.Id);
             dbContact.Name     = contact.Name;
             dbContact.Email    = contact.Email;
             dbContact.Phone    = contact.Phone;
 
-            SaveChanges();
+            _dal.SaveChanges();
         }
 
         public void Delete(int contactId)
         {
             //Contact instante can be different than the coresponding instance in the DbContext
-            IContact dbContact = Contacts.Find(contactId);
-            Contacts.Remove(dbContact);
-            SaveChanges();
+            Contact dbContact = _dal.Contacts.Find(contactId);
+            _dal.Contacts.Remove(dbContact);
+            _dal.SaveChanges();
         }
 
         public IList<IContact> GetContacts()
         {
-            return Contacts.ToList();
+            return new List<IContact>(_dal.Contacts.ToList());
         }
+
+        #endregion
     }
 }

@@ -12,7 +12,7 @@ namespace UnitTests
     {
         #region Variables
 
-        private IContactsRepository _testingRepository = RepositoryServiceLocator.Instance.GetRepository<MockContactsRepository>();
+        private IContactsRepository<IContact> _testingRepository = RepositoryServiceLocator.Instance.GetRepository<DatabaseContactsRepository>();
 
         #endregion
 

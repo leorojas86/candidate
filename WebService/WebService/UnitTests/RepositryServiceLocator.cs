@@ -12,7 +12,7 @@ namespace UnitTests
     {
         #region Variables
 
-        private Dictionary<Type, IContactsRepository> _repositories = new Dictionary<Type, IContactsRepository>();
+        private Dictionary<Type, IContactsRepository<IContact>> _repositories = new Dictionary<Type, IContactsRepository<IContact>>();
 
         private static RepositoryServiceLocator _instance = null;
 
@@ -39,14 +39,14 @@ namespace UnitTests
         private RepositoryServiceLocator()
         {
             _repositories.Add(typeof(MockContactsRepository), new MockContactsRepository());
-            //_repositories.Add(typeof(DatabaseContactsRepository), new DatabaseContactsRepository());
+            _repositories.Add(typeof(DatabaseContactsRepository), new DatabaseContactsRepository());
         }
 
         #endregion
 
         #region Methods
 
-        public IContactsRepository GetRepository<T>() where T : IContactsRepository
+        public IContactsRepository<IContact> GetRepository<T>() where T : IContactsRepository<IContact>
         {
             return _repositories[typeof(T)];
         }

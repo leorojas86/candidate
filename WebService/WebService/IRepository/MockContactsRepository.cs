@@ -11,7 +11,7 @@ namespace IRepository
     /// Mock class to emulate a contacts repository, it updates a dictionary and a list of contacts to 
     /// make sure all the opperations on the list and dictionary work as expected during unit tests
     /// </summary>
-    public class MockContactsRepository : IContactsRepository
+    public class MockContactsRepository : IContactsRepository<IContact>
     {
         #region Variables
 

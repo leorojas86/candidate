@@ -11,7 +11,7 @@ namespace WebApplication.Controllers
     {
         #region Variables
 
-        private IContactsRepository contactsRepository = null;
+        //private IContactsRepository<IContact> contactsRepository = null;
 
         #endregion
 
