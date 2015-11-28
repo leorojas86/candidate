@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="css/header.css" />
         <link rel="stylesheet" type="text/css" href="css/content.css" />
         <link rel="stylesheet" type="text/css" href="css/footer.css" />        
-        <link rel="stylesheet/less" type="text/css" href="css/GenericStyles.less" />   
+        <link rel="stylesheet" type="text/css" href="css/GenericStyles.css" />   
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" language="javascript"></script>		
         <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js" type="text/javascript" language="javascript"></script>
@@ -20,6 +20,24 @@
         <!-- End Header Effects -->
 
         <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+
+
+        <script src="scripts/Config.js" type="text/javascript" language="javascript"></script>
+        <script src="scripts/WebServiceClient.js" type="text/javascript" language="javascript"></script>
+
+        <script type="text/javascript" language="javascript">
+
+            $(document).ready(function() 
+            {
+                WebServiceClient.Instance.getContacts(OnGetContactsCallback);
+            });
+
+            function OnGetContactsCallback(responseData)
+            {
+                alert(responseData);
+            }
+
+        </script>
     </head>
     <body>  
         <header id="ha-header" class="ha-header ha-header-large">
