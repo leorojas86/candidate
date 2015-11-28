@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
@@ -54,20 +55,47 @@ namespace WebApplication.Controllers
 
         #region Actions
 
-        public ActionResult Index()
+        // GET: GetContacts
+        [HttpGet]
+        public ActionResult GetContacts()
         {
-            //IContact newContact = _repository.Factory.CreateContact("Test", "Test", "Test");
-            //_repository.Add(newContact);
+            return GetContactsJSONResult();
+        }
 
-            return Json(_repository.GetContacts(), JsonRequestBehavior.AllowGet);
+        private JsonResult GetContactsJSONResult()
+        {
+            try
+            {
+                return Json(new ServiceResult<IList<IContact>>(true, _repository.GetContacts()), JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e)
+            {
+                return Json(new ServiceResult<String>(false, e.Message), JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion
 
-        // GET: Contacts/Details/5
-        public ActionResult Details(int id)
+        // GET: Contacts/Delete/5
+        //[HttpDelete], TODO: should this be delete????
+        //[HttpPost]
+        [HttpGet]
+        public ActionResult DeleteContact(int id)
         {
-            return View();
+            return GetDeleteContactJSONResult(id);
+        }
+
+        private JsonResult GetDeleteContactJSONResult(int id)
+        {
+            try
+            {
+                _repository.Delete(id);
+                return Json(new ServiceResult<IList<IContact>>(true, _repository.GetContacts()), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new ServiceResult<String>(false, e.Message), JsonRequestBehavior.AllowGet);
+            }
         }
 
         // GET: Contacts/Create
@@ -112,12 +140,6 @@ namespace WebApplication.Controllers
             {
                 return View();
             }
-        }
-
-        // GET: Contacts/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
         }
 
         // POST: Contacts/Delete/5
