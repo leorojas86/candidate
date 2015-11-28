@@ -1,3 +1,4 @@
+- Implement test cases for web service.
 - Use the "StructureMap" in the WebApplication.
 - Connect web application to a sql server.
 - Publish the web application on IIS 
@@ -17,4 +18,15 @@
 		- Connection, Pusblish Method -> File System, Target Location -> C:\inetpub\wwwroot\contacts
 
 		- Remove Readonly, edit permissions
+
+
+http://stackoverflow.com/questions/9794985/iis-this-configuration-section-cannot-be-used-at-this-path-configuration-lock
+
+"Click "Start button"
+in the search box, enter "Turn windows features on or off"
+in the features window, Click: "Internet Information Services"
+Click: "World Wide Web Services"
+Click: "Application Development Features"
+Check (enable) the features. I checked all but CGI."
+
 - Try to use soap instead of JSON format.

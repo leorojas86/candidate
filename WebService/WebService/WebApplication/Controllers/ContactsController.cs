@@ -10,7 +10,7 @@ using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
-    public class ContactsController : Controller
+    public class ContactsController : Controller//TODO: This can be implemented inheriting from ApiController
     {
         #region Variables
 
@@ -25,13 +25,13 @@ namespace WebApplication.Controllers
             _repository = repository;
         }
 
-        /*public ContactsController() : this(new MockContactsRepository())
-        {
-        }*/
-
-        public ContactsController() : this(new DatabaseContactsRepository())
+        public ContactsController() : this(new MockContactsRepository())
         {
         }
+
+        /*public ContactsController() : this(new DatabaseContactsRepository())
+        {
+        }*/
 
         #endregion
 
@@ -69,8 +69,6 @@ namespace WebApplication.Controllers
             }
         }
 
-        #endregion
-
         // GET: Contacts/Delete/5
         //[HttpDelete], TODO: should this be delete????
         [HttpPost]
@@ -89,7 +87,6 @@ namespace WebApplication.Controllers
         }
 
         // GET: Contacts/Add/Name/Email/Phone
-        //[HttpPost]
         [HttpPost]
         //[HttpGet]
         public ActionResult Add(string name, string email, string phone)
@@ -125,5 +122,7 @@ namespace WebApplication.Controllers
                 return Json(new ServiceResult<String>(false, e.Message)/*, JsonRequestBehavior.AllowGet*/);
             }
         }
+
+        #endregion
     }
 }
