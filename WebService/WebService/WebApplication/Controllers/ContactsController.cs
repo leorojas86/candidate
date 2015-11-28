@@ -55,20 +55,15 @@ namespace WebApplication.Controllers
 
         #region Actions
 
-        // GET: GetContacts
+        // GET: Contacts/Get
         [HttpGet]
-        public ActionResult GetContacts()
-        {
-            return GetContactsJSONResult();
-        }
-
-        private JsonResult GetContactsJSONResult()
+        public ActionResult Get()
         {
             try
             {
                 return Json(new ServiceResult<IList<IContact>>(true, _repository.GetContacts()), JsonRequestBehavior.AllowGet);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return Json(new ServiceResult<String>(false, e.Message), JsonRequestBehavior.AllowGet);
             }
@@ -78,19 +73,14 @@ namespace WebApplication.Controllers
 
         // GET: Contacts/Delete/5
         //[HttpDelete], TODO: should this be delete????
-        //[HttpPost]
-        [HttpGet]
-        public ActionResult DeleteContact(int id)
-        {
-            return GetDeleteContactJSONResult(id);
-        }
-
-        private JsonResult GetDeleteContactJSONResult(int id)
+        [HttpPost]
+        //[HttpGet]
+        public ActionResult Delete(int id)
         {
             try
             {
                 _repository.Delete(id);
-                return Json(new ServiceResult<IList<IContact>>(true, _repository.GetContacts()), JsonRequestBehavior.AllowGet);
+                return Json(new ServiceResult<String>(true, "Contact has been deleted"), JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
@@ -98,63 +88,41 @@ namespace WebApplication.Controllers
             }
         }
 
-        // GET: Contacts/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Contacts/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        // GET: Contacts/Add/Name/Email/Phone
+        //[HttpPost]
+        //[HttpPost]
+        [HttpGet]
+        public ActionResult Add(string name, string email, string phone)
         {
             try
             {
-                // TODO: Add insert logic here
+                IContact newContact = _repository.Factory.CreateContact(name, email, phone);
+                _repository.Add(newContact);
 
-                return RedirectToAction("Index");
+                return Json(new ServiceResult<String>(true, "New contact has been added"), JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                return Json(new ServiceResult<String>(false, e.Message), JsonRequestBehavior.AllowGet);
             }
         }
 
-        // GET: Contacts/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Contacts/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        // POST: Contacts/Update/Id/Name/Email/Phone
+        //[HttpPost]
+        [HttpGet]
+        public ActionResult Update(int id, string name, string email, string phone)
         {
             try
             {
-                // TODO: Add update logic here
+                IContact contact = _repository.Factory.CreateContact(name, email, phone);
+                contact.Id = id;
+                _repository.Update(contact);
 
-                return RedirectToAction("Index");
+                return Json(new ServiceResult<String>(true, "Contact has been updated"), JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch (Exception e)
             {
-                return View();
-            }
-        }
-
-        // POST: Contacts/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                return Json(new ServiceResult<String>(false, e.Message), JsonRequestBehavior.AllowGet);
             }
         }
     }

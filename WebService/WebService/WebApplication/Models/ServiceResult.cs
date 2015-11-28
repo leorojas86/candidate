@@ -9,9 +9,9 @@ namespace WebApplication.Models
     {
         #region Properties
 
-        public T Data { get; set;}
-
         public bool Success { get; set; }
+
+        public T Data { get; set;}
 
         #endregion
 

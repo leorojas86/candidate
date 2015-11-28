@@ -1,4 +1,4 @@
 - Use the "StructureMap" in the WebApplication.
 - Connect web application to a sql server.
-- Publish the web application.
+- Publish the web application on IIS.
 - Try to use soap instead of JSON format.
