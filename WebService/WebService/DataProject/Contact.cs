@@ -30,7 +30,6 @@ namespace DataProject
 
         }
 
-
         public Contact(string name, string email, string phone)
         {
             Name    = name;
