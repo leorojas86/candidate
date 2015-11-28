@@ -18,7 +18,8 @@ namespace Repository
 
         #region Constructors
 
-        public ContactsDAL() : base(@"Data Source=.\SQLExpress;Initial Catalog=Contacts;Integrated Security=True;")//base("name=SQLExpress")
+        public ContactsDAL()
+            : base(@"Data Source=LEO_0399\SQLEXPRESS;Initial Catalog=Contacts;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False")//base("name=SQLExpress")
         {
         }
 
