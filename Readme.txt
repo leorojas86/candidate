@@ -4,6 +4,14 @@ Develop Environment:
 - Visual Studio Community 2013 Version 12.0
 - Install SQL Server 2014, download "SQL Server 2014 Express with Tools 64 Bit" from "https://msdn.microsoft.com/en-us/sqlserver2014express.aspx"
 
+SQLExpress
+SQL_Latin1_General_CP1_CI_AS
+
+sa -> pass
+
+SQL SErver Object Explorer/Add SQL Server.../ServerName:Browse/SQLServerExpress/Autentication:Windows Autentication
+
+SQLServerConnection/Type
 
 References:
 
