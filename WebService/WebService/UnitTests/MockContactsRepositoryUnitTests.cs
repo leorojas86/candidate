@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace UnitTests
 {
     [TestClass]
-    public class MockContactsRepositoryUnitTests : RepositoryUnitTests
+    public class MockContactsRepositoryUnitTests : ContactsRepositoryUnitTests
     {
         #region Constructors
 

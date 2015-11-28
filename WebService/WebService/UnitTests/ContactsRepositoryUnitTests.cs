@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace UnitTests
 {
     [TestClass]
-    public abstract class RepositoryUnitTests : IDisposable
+    public abstract class ContactsRepositoryUnitTests : IDisposable
     {
         #region Variables
 
@@ -19,7 +19,7 @@ namespace UnitTests
 
         #region Constructors
 
-        public RepositoryUnitTests(IContactsRepository repository)
+        public ContactsRepositoryUnitTests(IContactsRepository repository)
         {
             _repository = repository;
         }
