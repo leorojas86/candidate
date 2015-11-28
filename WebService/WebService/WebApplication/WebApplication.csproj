@@ -167,9 +167,17 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataProject\DataProject.csproj">
+      <Project>{58593c9a-4a54-4cb5-b29e-ccd82c3a38cd}</Project>
+      <Name>DataProject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IRepository\IRepository.csproj">
       <Project>{68244ee0-671b-4072-b49a-0cd990ab0d14}</Project>
       <Name>IRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{a7d4af03-1b09-4fa4-ab4e-d56642668961}</Project>
+      <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
