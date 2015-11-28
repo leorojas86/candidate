@@ -1,4 +1,20 @@
 - Use the "StructureMap" in the WebApplication.
 - Connect web application to a sql server.
-- Publish the web application on IIS.
+- Publish the web application on IIS 
+	https://www.youtube.com/watch?v=-ymjT8C-tHc
+	https://technet.microsoft.com/en-us/library/ms143748(v=sql.90).aspx 
+		- Control Panel\All Control Panel Items\Programs and Features.
+		- Turn Windows features on or off.
+		- Internet Information Services.
+		- Internet Information Services (IIS) Manager.
+		- Sites Add Web Site.
+		- Site name -> Contacts -> C:\inetpub\wwwroot\contacts, local.contacts.com
+
+
+		- Publish...
+		- Profile/Custom.
+		- Profile Name -> Contacts
+		- Connection, Pusblish Method -> File System, Target Location -> C:\inetpub\wwwroot\contacts
+
+		- Remove Readonly, edit permissions
 - Try to use soap instead of JSON format.
