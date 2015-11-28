@@ -73,8 +73,8 @@ namespace WebApplication.Controllers
 
         // GET: Contacts/Delete/5
         //[HttpDelete], TODO: should this be delete????
-        [HttpPost]
-        //[HttpGet]
+        //[HttpPost]
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             try
