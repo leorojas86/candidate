@@ -11,7 +11,7 @@ namespace DataProject
     {
         #region Methods
 
-        public IContact CreateContact(string name, string email, string phone)
+        public IContact CreateContact(string name = null, string email = null, string phone = null)
         {
             return new Contact(name, email, phone);
         }

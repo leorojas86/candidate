@@ -10,7 +10,7 @@ namespace IRepository
     {
         #region Methods
 
-        IContact CreateContact(string name, string email, string phone);
+        IContact CreateContact(string name = null, string email = null, string phone = null);
 
         #endregion
     }
