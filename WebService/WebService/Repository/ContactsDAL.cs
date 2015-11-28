@@ -10,7 +10,19 @@ namespace Repository
 {
     public class ContactsDAL : DbContext
     {
+        #region Properties
+
         public DbSet<Contact> Contacts { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        public ContactsDAL() : base(@"Data Source=.\SQLExpress;Initial Catalog=Contacts;Integrated Security=True;")//base("name=SQLExpress")
+        {
+        }
+
+        #endregion
 
         #region Methods
 
