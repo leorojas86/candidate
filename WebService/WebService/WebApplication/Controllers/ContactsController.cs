@@ -2,6 +2,7 @@
 using IRepository;
 using Repository;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -65,7 +66,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception e)
             {
-                return Json(new ServiceResult<IList<IContact>>(false, null, e.Message), JsonRequestBehavior.AllowGet);
+                return Json(new ServiceResult<string>(false, e.ToString(), e.Message), JsonRequestBehavior.AllowGet);
             }
         }
 

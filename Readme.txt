@@ -11,7 +11,9 @@ sa -> pass
 
 SQL SErver Object Explorer/Add SQL Server.../ServerName:Browse/SQLServerExpress/Autentication:Windows Autentication
 
-SQLServerConnection/Type
+SQLServerConnection/Type, DataSource:MicrosoftSQLServer 
+
+Login failed for user \u0027IIS APPPOOL\\DefaultAppPool\u0027
 
 References:
 
