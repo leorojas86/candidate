@@ -61,11 +61,11 @@ namespace WebApplication.Controllers
         {
             try
             {
-                return Json(new ServiceResult<IList<IContact>>(true, _repository.GetContacts()), JsonRequestBehavior.AllowGet);
+                return Json(new ServiceResult<IList<IContact>>(true, _repository.GetContacts(), null), JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
-                return Json(new ServiceResult<String>(false, e.Message), JsonRequestBehavior.AllowGet);
+                return Json(new ServiceResult<IList<IContact>>(false, null, e.Message), JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -78,11 +78,11 @@ namespace WebApplication.Controllers
             try
             {
                 _repository.Delete(id);
-                return Json(new ServiceResult<String>(true, "Contact has been deleted")/*, JsonRequestBehavior.AllowGet*/);
+                return Json(new ServiceResult<String>(true, "Contact has been deleted", null)/*, JsonRequestBehavior.AllowGet*/);
             }
             catch (Exception e)
             {
-                return Json(new ServiceResult<String>(false, e.Message)/*, JsonRequestBehavior.AllowGet*/);
+                return Json(new ServiceResult<String>(false, null, e.Message)/*, JsonRequestBehavior.AllowGet*/);
             }
         }
 
@@ -96,11 +96,11 @@ namespace WebApplication.Controllers
                 IContact newContact = _repository.Factory.CreateContact(name, email, phone);
                 _repository.Add(newContact);
 
-                return Json(new ServiceResult<String>(true, "New contact has been added")/*, JsonRequestBehavior.AllowGet*/);
+                return Json(new ServiceResult<String>(true, "New contact has been added", null)/*, JsonRequestBehavior.AllowGet*/);
             }
             catch (Exception e)
             {
-                return Json(new ServiceResult<String>(false, e.Message)/*, JsonRequestBehavior.AllowGet*/);
+                return Json(new ServiceResult<String>(false, null, e.Message)/*, JsonRequestBehavior.AllowGet*/);
             }
         }
 
@@ -115,11 +115,11 @@ namespace WebApplication.Controllers
                 contact.Id = id;
                 _repository.Update(contact);
 
-                return Json(new ServiceResult<String>(true, "Contact has been updated")/*, JsonRequestBehavior.AllowGet*/);
+                return Json(new ServiceResult<String>(true, "Contact has been updated", null)/*, JsonRequestBehavior.AllowGet*/);
             }
             catch (Exception e)
             {
-                return Json(new ServiceResult<String>(false, e.Message)/*, JsonRequestBehavior.AllowGet*/);
+                return Json(new ServiceResult<String>(false, null, e.Message)/*, JsonRequestBehavior.AllowGet*/);
             }
         }
 

@@ -19,7 +19,7 @@ namespace WebApplication.Models
 
         #region Constructors
 
-        public ServiceResult(bool success, T data = null, string errorMessage = null)
+        public ServiceResult(bool success, T data, string errorMessage)
         {
             Success         = success;
             Data            = data;
