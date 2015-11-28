@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DataProject;
+using IRepository;
+using Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,17 +11,51 @@ namespace WebApplication.Controllers
 {
     public class ContactsController : Controller
     {
-        // GET: Contacts
+        #region Variables
+
+        private IContactsRepository _repository = null;
+
+        #endregion
+
+        #region Constructors
+
+        public ContactsController(IContactsRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public ContactsController() : this(new DatabaseContactsRepository())
+        {
+        }
+
+        #endregion
+
+        #region Methods
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            if(disposing)
+            {
+                if(_repository != null)
+                {
+                    _repository.Dispose();
+                    _repository = null;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Actions
+
         public ActionResult Index()
         {
-            List<object> movies = new List<object>();
-
-            movies.Add(new { Title = "Ghostbusters", Genre = "Comedy", Year = 1984 });
-            movies.Add(new { Title = "Gone with Wind", Genre = "Drama", Year = 1939 });
-            movies.Add(new { Title = "Star Wars", Genre = "Science Fiction", Year = 1977 });
-
-            return Json(movies, JsonRequestBehavior.AllowGet);
+            return Json(_repository.GetContacts(), JsonRequestBehavior.AllowGet);
         }
+
+        #endregion
 
         // GET: Contacts/Details/5
         public ActionResult Details(int id)
