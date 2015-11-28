@@ -1,0 +1,2 @@
+- Connect web application to a sql server.
+- Publish the web application.
