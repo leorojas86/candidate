@@ -25,13 +25,13 @@ namespace WebApplication.Controllers
             _repository = repository;
         }
 
-        public ContactsController() : this(new MockContactsRepository())
-        {
-        }
-
-        /*public ContactsController() : this(new DatabaseContactsRepository())
+        /*public ContactsController() : this(new MockContactsRepository())
         {
         }*/
+
+        public ContactsController() : this(new DatabaseContactsRepository())
+        {
+        }
 
         #endregion
 
