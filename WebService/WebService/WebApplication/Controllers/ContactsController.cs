@@ -24,6 +24,10 @@ namespace WebApplication.Controllers
             _repository = repository;
         }
 
+        /*public ContactsController() : this(new MockContactsRepository())
+        {
+        }*/
+
         public ContactsController() : this(new DatabaseContactsRepository())
         {
         }
@@ -52,6 +56,9 @@ namespace WebApplication.Controllers
 
         public ActionResult Index()
         {
+            //IContact newContact = _repository.Factory.CreateContact("Test", "Test", "Test");
+            //_repository.Add(newContact);
+
             return Json(_repository.GetContacts(), JsonRequestBehavior.AllowGet);
         }
 
