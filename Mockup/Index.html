@@ -22,20 +22,19 @@
         <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
 
 
-        <script src="scripts/Config.js" type="text/javascript" language="javascript"></script>
-        <script src="scripts/WebServiceClient.js" type="text/javascript" language="javascript"></script>
+        <script src="scripts/Config.js"             type="text/javascript" language="javascript"></script>
+        <script src="scripts/WebServiceClient.js"   type="text/javascript" language="javascript"></script>
+        <script src="scripts/ContactsController.js" type="text/javascript" language="javascript"></script>
 
         <script type="text/javascript" language="javascript">
 
+            var contactsController = new ContactsController();
+
             $(document).ready(function() 
             {
-                WebServiceClient.Instance.getContacts(OnGetContactsCallback);
+                contactsController.loadContacts();
+                
             });
-
-            function OnGetContactsCallback(responseData)
-            {
-                alert(responseData);
-            }
 
         </script>
     </head>

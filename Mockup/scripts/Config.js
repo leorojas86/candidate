@@ -1,5 +1,5 @@
 
 var Config =
 {
-     'WebServiceURL' : "http://localhost:59850/"
+     'WebServiceURL' : "http://localhost/contacts/"
 };

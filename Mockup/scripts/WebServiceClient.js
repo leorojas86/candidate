@@ -14,10 +14,33 @@ function WebServiceClientClass()
 //Methods
 WebServiceClientClass.prototype.getContacts = function(callback)
 {
-	$.ajax(
+	/*$.ajax(
 	{ 
         type: 'GET', 
         url: this.serverURL + 'Contacts/Get', 
-        success: function (data) { callback(data); }
+        success: function(data, status, xhr) { callback(data); }
+        error:   function(data, status, xhr) 
+        {
+        	var errorData = { Success : false, Data : data }; 
+        	callback(data); 
+        }
+    });*/
+
+	this.ajax('GET','Contacts/Get', callback);
+};
+
+WebServiceClientClass.prototype.ajax = function(method, resourceURI, callback)
+{
+	$.ajax(
+	{ 
+        type: method, 
+        url: this.serverURL + resourceURI, 
+        dataType: "json",
+        success: function(data, status, xhr) { callback(data); },
+        error:   function(data, status, xhr) 
+        {
+        	var errorData = { Success : false, Data : data }; 
+        	callback(data); 
+        }
     });
 };
