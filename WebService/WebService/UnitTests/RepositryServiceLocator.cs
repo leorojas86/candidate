@@ -1,4 +1,5 @@
-﻿using IRepository;
+﻿using DataProject;
+using IRepository;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace UnitTests
     {
         #region Variables
 
-        private Dictionary<Type, IContactsRepository<IContact>> _repositories = new Dictionary<Type, IContactsRepository<IContact>>();
+        private Dictionary<Type, IContactsRepository> _repositories = new Dictionary<Type, IContactsRepository>();
 
         private static RepositoryServiceLocator _instance = null;
 
@@ -46,7 +47,7 @@ namespace UnitTests
 
         #region Methods
 
-        public IContactsRepository<IContact> GetRepository<T>() where T : IContactsRepository<IContact>
+        public IContactsRepository GetRepository<T>() where T : IContactsRepository
         {
             return _repositories[typeof(T)];
         }

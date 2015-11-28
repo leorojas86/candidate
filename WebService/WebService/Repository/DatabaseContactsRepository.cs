@@ -9,11 +9,21 @@ using DataProject;
 
 namespace Repository
 {
-    public class DatabaseContactsRepository : IContactsRepository<IContact>
+    public class DatabaseContactsRepository : IContactsRepository
     {
         #region Variables
 
-        private ContactsDAL _dal = new ContactsDAL();
+        private ContactsDAL _dal                 = new ContactsDAL();
+        private ContactsFactory _contactsFactory = new ContactsFactory();
+
+        #endregion
+
+        #region Properties
+
+        public IContactsFactory Factory
+        {
+            get { return _contactsFactory; }
+        }
 
         #endregion
 
@@ -21,42 +31,33 @@ namespace Repository
 
         public void Add(IContact contact)
         {
-            Add((Contact)contact);
-        }
-
-        public void Add(Contact contact)
-        {
-            _dal.Contacts.Add(contact);
-            _dal.SaveChanges();
+            _dal.Add((Contact)contact);
         }
 
         public void Update(IContact contact)
         {
-            Update((Contact)contact);
-        }
-
-        public void Update(Contact contact)
-        {
-            //Contact instante can be different than the coresponding instance in the DbContext
-            IContact dbContact = _dal.Contacts.Find(contact.Id);
-            dbContact.Name     = contact.Name;
-            dbContact.Email    = contact.Email;
-            dbContact.Phone    = contact.Phone;
-
-            _dal.SaveChanges();
+            _dal.Update((Contact)contact);
         }
 
         public void Delete(int contactId)
         {
-            //Contact instante can be different than the coresponding instance in the DbContext
-            Contact dbContact = _dal.Contacts.Find(contactId);
-            _dal.Contacts.Remove(dbContact);
-            _dal.SaveChanges();
+            _dal.Delete(contactId);
         }
 
         public IList<IContact> GetContacts()
         {
-            return new List<IContact>(_dal.Contacts.ToList());
+            return new List<IContact>(_dal.GetContacts());
+        }
+
+        public void Dispose()
+        {
+            if(_dal != null)
+            { 
+                _dal.Dispose();
+                _dal = null;
+            }
+
+            _contactsFactory = null;
         }
 
         #endregion

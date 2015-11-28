@@ -5,19 +5,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IRepository
+namespace DataProject
 {
     /// <summary>
     /// Mock class to emulate a contacts repository, it updates a dictionary and a list of contacts to 
     /// make sure all the opperations on the list and dictionary work as expected during unit tests
     /// </summary>
-    public class MockContactsRepository : IContactsRepository<IContact>
+    public class MockContactsRepository : IContactsRepository
     {
         #region Variables
 
         private Dictionary<int, IContact> _contacts = new Dictionary<int, IContact>();
         private List<IContact> _contactsList        = new List<IContact>();
         private int _newContactId                   = 0;
+        private ContactsFactory _contactsFactory    = new ContactsFactory();
+
+        #endregion
+
+        #region Properties
+
+        public IContactsFactory Factory 
+        {
+            get { return _contactsFactory; }
+        }
 
         #endregion
 
@@ -51,6 +61,13 @@ namespace IRepository
         public IList<IContact> GetContacts()
         {
             return _contactsList;
+        }
+
+        public void Dispose()
+        {
+            _contacts           = null;
+            _contactsList       = null;
+            _contactsFactory    = null;
         }
 
         #endregion
