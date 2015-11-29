@@ -38,6 +38,11 @@ namespace WebApplication.Controllers
 
         #region Methods
 
+        private ActionResult GetExceptionActionResult(Exception e)
+        {
+            return Json(new ServiceResult<string>(false, e.ToString(), e.Message), JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
@@ -66,7 +71,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception e)
             {
-                return Json(new ServiceResult<string>(false, e.ToString(), e.Message), JsonRequestBehavior.AllowGet);
+                return GetExceptionActionResult(e);
             }
         }
 
@@ -81,7 +86,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception e)
             {
-                return Json(new ServiceResult<String>(false, null, e.Message));
+                return GetExceptionActionResult(e);
             }
         }
 
@@ -98,7 +103,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception e)
             {
-                return Json(new ServiceResult<String>(false, null, e.Message));
+                return GetExceptionActionResult(e);
             }
         }
 
@@ -116,7 +121,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception e)
             {
-                return Json(new ServiceResult<String>(false, null, e.Message));
+                return GetExceptionActionResult(e);
             }
         }
 
