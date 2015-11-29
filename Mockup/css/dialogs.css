@@ -1,3 +1,8 @@
+.dialog
+{
+    display: none;
+}
+
 .dialogGrayout
 {
     background-color:rgba(0, 0, 0, 0.31);
@@ -15,7 +20,7 @@
     left: 50%;
     top: 50%;
     width: 300px;
-    height: 300px;
+    height: 280px;
     margin-left: -150px;
     margin-top: -50px;
 }
