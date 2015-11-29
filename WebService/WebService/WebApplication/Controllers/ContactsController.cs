@@ -89,7 +89,7 @@ namespace WebApplication.Controllers
                 IContact newContact = _repository.Factory.CreateContact(name, email, phone);
                 _repository.Add(newContact);
 
-                return Json(new ServiceResult<String>(true, "New contact has been added", null));
+                return Json(new ServiceResult<IContact>(true, newContact, null));
             }
             catch (Exception e)
             {

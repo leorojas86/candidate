@@ -29,7 +29,7 @@ namespace UnitTests
         #region Methods
 
         [TestMethod]
-        public void TestAdd()
+        public void TestRepositoryAdd()
         {
             int initialContactsCount    = _repository.GetContacts().Count;
             IContact newContact         = _repository.Factory.CreateContact();
@@ -42,7 +42,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestUpdate()
+        public void TestRepositoryUpdate()
         {
             int initialContactsCount = _repository.GetContacts().Count;
 
@@ -69,7 +69,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestDelete()
+        public void TestRepositoryDelete()
         {
             int initialContactsCount = _repository.GetContacts().Count;
 
