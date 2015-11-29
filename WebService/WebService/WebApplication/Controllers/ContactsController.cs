@@ -1,6 +1,4 @@
-﻿using DataProject;
-using IRepository;
-using Repository;
+﻿using IRepository;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,14 +22,6 @@ namespace WebApplication.Controllers
         public ContactsController(IContactsRepository repository)
         {
             _repository = repository;
-        }
-
-        /*public ContactsController() : this(new MockContactsRepository())
-        {
-        }*/
-
-        public ContactsController() : this(new DatabaseContactsRepository())
-        {
         }
 
         #endregion
