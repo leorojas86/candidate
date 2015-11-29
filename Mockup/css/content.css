@@ -27,7 +27,7 @@
 #infoWrapper table tr:hover
 {
     color:#FFF;
-    background-color:#EF6925;
+    background-color:#E5C37E !important;
     cursor:default;
 }
 
