@@ -28,7 +28,7 @@ namespace WebApplication.Controllers
 
         #region Methods
 
-        private ActionResult GetExceptionActionResult(Exception e)
+        private JsonResult GetExceptionActionResult(Exception e)
         {
             return Json(new ServiceResult<string>(false, e.ToString(), e.Message), JsonRequestBehavior.AllowGet);
         }
@@ -53,7 +53,7 @@ namespace WebApplication.Controllers
 
         // GET: Contacts/Get
         [HttpGet]
-        public ActionResult Get()
+        public JsonResult Get()
         {
             try
             {
@@ -67,7 +67,7 @@ namespace WebApplication.Controllers
 
         // GET: Contacts/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id)
+        public JsonResult Delete(int id)
         {
             try
             {
@@ -82,14 +82,14 @@ namespace WebApplication.Controllers
 
         // GET: Contacts/Add/Name/Email/Phone
         [HttpPost]
-        public ActionResult Add(string name, string email, string phone)
+        public JsonResult Add(string name, string email, string phone)
         {
             try
             {
                 IContact newContact = _repository.Factory.CreateContact(name, email, phone);
                 _repository.Add(newContact);
 
-                return Json(new ServiceResult<IContact>(true, newContact, null));
+                return Json(new ServiceResult<int>(true, newContact.Id, null));
             }
             catch (Exception e)
             {
@@ -99,7 +99,7 @@ namespace WebApplication.Controllers
 
         // POST: Contacts/Update/Id/Name/Email/Phone
         [HttpPost]
-        public ActionResult Update(int id, string name, string email, string phone)
+        public JsonResult Update(int id, string name, string email, string phone)
         {
             try
             {

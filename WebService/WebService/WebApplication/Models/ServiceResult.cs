@@ -5,15 +5,11 @@ using System.Web;
 
 namespace WebApplication.Models
 {
-    public class ServiceResult<T> where T : class
+    public class ServiceResult<T> : ServiceResultBase
     {
         #region Properties
 
-        public bool Success { get; set; }
-
         public T Data { get; set; }
-
-        public string ErrorMessage { get; set; }
 
         #endregion
 

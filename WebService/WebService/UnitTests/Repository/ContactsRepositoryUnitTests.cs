@@ -88,7 +88,23 @@ namespace UnitTests
             Assert.AreEqual(contacts.Count - initialContactsCount, 2);
 
             for (int i = 0; i < contacts.Count; i++)
-                Assert.AreNotEqual(contacts[i].Name, "TestDelete");
+                Assert.AreNotEqual(contacts[i].Id, newContact2.Id);
+        }
+
+        [TestMethod]
+        public void TestRepositoryGet()
+        {
+            int initialContactsCount = _repository.GetContacts().Count;
+
+            IContact newContact  = _repository.Factory.CreateContact("Test", "Test", "Test");
+            IContact newContact2 = _repository.Factory.CreateContact("TestDelete", "TestDelete", "TestDelete");
+
+            _repository.Add(newContact);
+            _repository.Add(newContact2);
+
+            IList<IContact> contacts = _repository.GetContacts();
+
+            Assert.AreEqual(contacts.Count - initialContactsCount, 2);
         }
 
         public void Dispose()

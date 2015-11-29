@@ -34,31 +34,22 @@ namespace UnitTests
         [TestMethod]
         public void TestWebServiceAdd()
         {
-            JsonResult addActionResult               = _controller.Add("TestAdd", "TestAdd", "TestAdd") as JsonResult;
-            ServiceResult<IContact> addServiceResult = addActionResult.Data as ServiceResult<IContact>;
+            JsonResult addActionResult               = _controller.Add("TestAdd", "TestAdd", "TestAdd");
+            ServiceResultBase addServiceResult = addActionResult.Data as ServiceResultBase;
 
             Assert.IsTrue(addServiceResult.Success);
-
-            /*int initialContactsCount = _controller.Get();
-            IContact newContact = _repository.Factory.CreateContact();
-            int addCount = 4;
-
-            for (int i = 0; i < addCount; i++)
-                _repository.Add(newContact);
-
-            Assert.AreEqual(_repository.GetContacts().Count - initialContactsCount, addCount);*/
         }
 
         [TestMethod]
         public void TestWebServiceUpdate()
         {
-            JsonResult addActionResult               = _controller.Add("TestUpdate", "TestUpdate", "TestUpdate") as JsonResult;
-            ServiceResult<IContact> addServiceResult = addActionResult.Data as ServiceResult<IContact>;
+            JsonResult addActionResult          = _controller.Add("TestUpdate", "TestUpdate", "TestUpdate");
+            ServiceResult<int> addServiceResult = addActionResult.Data as ServiceResult<int>;
 
             Assert.IsTrue(addServiceResult.Success);
 
-            JsonResult updateActionResult               = _controller.Update(addServiceResult.Data.Id, "Updated", "Updated", "Updated") as JsonResult;
-            ServiceResult<string> updateServiceResult   = updateActionResult.Data as ServiceResult<string>;
+            JsonResult updateActionResult         = _controller.Update(addServiceResult.Data, "Updated", "Updated", "Updated");
+            ServiceResultBase updateServiceResult = updateActionResult.Data as ServiceResultBase;
 
             Assert.IsTrue(updateServiceResult.Success);
         }
@@ -66,15 +57,24 @@ namespace UnitTests
         [TestMethod]
         public void TestWebServiceDelete()
         {
-            JsonResult addActionResult = _controller.Add("TestDelete", "TestDelete", "TestDelete") as JsonResult;
-            ServiceResult<IContact> addServiceResult = addActionResult.Data as ServiceResult<IContact>;
+            JsonResult addActionResult          = _controller.Add("TestDelete", "TestDelete", "TestDelete");
+            ServiceResult<int> addServiceResult = addActionResult.Data as ServiceResult<int>;
 
             Assert.IsTrue(addServiceResult.Success);
 
-            JsonResult updateActionResult = _controller.Delete(addServiceResult.Data.Id) as JsonResult;
-            ServiceResult<string> updateServiceResult = updateActionResult.Data as ServiceResult<string>;
+            JsonResult updateActionResult         = _controller.Delete(addServiceResult.Data);
+            ServiceResultBase updateServiceResult = updateActionResult.Data as ServiceResultBase;
 
             Assert.IsTrue(updateServiceResult.Success);
+        }
+
+        [TestMethod]
+        public void TestWebServiceGet()
+        {
+            JsonResult addActionResult          = _controller.Get();
+            ServiceResultBase addServiceResult  = addActionResult.Data as ServiceResultBase;
+
+            Assert.IsTrue(addServiceResult.Success);
         }
 
         #endregion
