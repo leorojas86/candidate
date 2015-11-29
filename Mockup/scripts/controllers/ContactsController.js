@@ -51,9 +51,11 @@ ContactsController.prototype.onGetContactsCallback =  function(responseData)
 		$.each(responseData.Data, function(i, contact)
 		{
 			var currentTableRowId = "contactsTableRow_" + currentRowIndex;
-			thisVar.tableBody.append("<tr id = '" + currentTableRowId + "'><td>" + contact.Name + "</td><td>" + contact.Email + "</td><td>" + contact.Phone + "</td></tr>");
+			var currentEmailId	  = "contactsTableEmail_" + currentRowIndex;
+			thisVar.tableBody.append("<tr id = '" + currentTableRowId + "'><td>" + contact.Name + "</td><td class='jtextfill'><span>" + contact.Email + "</span></td><td>" + contact.Phone + "</td></tr>");
 			
 			$("#" + currentTableRowId).click(function() { thisVar.onRowClick(currentTableRowId, contact.Id, i); });
+			$('.jtextfill').textfill({ maxFontPixels: 13 });
 
 			currentRowIndex++;
         });
