@@ -28,13 +28,7 @@
 #addContactDialogButton
 {
     width: 70px;
-    margin-left: 115;
-}
-
-#addContactDialogButton
-{
-    width: 100px;
-    margin-left: 185;
+    margin-left: 115px;
 }
 
 
@@ -55,11 +49,11 @@
 #updateContactDialogButton
 {
     width: 70px;
-    margin-left: 115;
+    margin-left: 115px;
 }
 
 #updateContactDialogButton
 {
     width: 100px;
-    margin-left: 185;
+    margin-left: 100px;
 }
