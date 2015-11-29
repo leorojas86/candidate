@@ -1,9 +1,11 @@
 //Variables
 //ContactsController.prototype.templateVariable = null;
+ContactsController.prototype.tableBody = null;
 
 //Constructors
 function ContactsController()
 {
+	this.tableBody = $("#contactsTableBody");
 }
 
 
@@ -25,6 +27,8 @@ ContactsController.prototype.onAddContactCallback =  function(responseData)
 
 ContactsController.prototype.loadContacts = function()
 {
+	this.tableBody.html("<p id='contactsLoadingText'>Loading...</p>");
+
 	var thisVar = this;
 	WebServiceClient.Instance.getContacts(function(responseData) { thisVar.onGetContactsCallback(responseData) });
 };
@@ -33,9 +37,13 @@ ContactsController.prototype.onGetContactsCallback =  function(responseData)
 {
 	if(responseData.Success)
 	{
-		$.each(responseData.Data, function(i, field)
+		this.tableBody.html("");
+		var thisVar = this;
+
+		$.each(responseData.Data, function(i, contact)
 		{
-			alert(field);
+			thisVar.tableBody.append("<tr><td>" + contact.Name + "</td><td>" + contact.Email + "</td><td>" + contact.Phone + "</td></tr>");
+			//alert(field);
             //$("div").append(field + " ");
         });
 	}

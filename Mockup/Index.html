@@ -28,13 +28,13 @@
 
         <script type="text/javascript" language="javascript">
 
-            var contactsController = new ContactsController();
+            var contactsController = null;
 
             $(document).ready(function() 
             {
-                contactsController.addContact("Test", "Test", "Test");
-                
-                //contactsController.loadContacts();
+                //contactsController.addContact("Test", "Test", "Test");
+                contactsController = new ContactsController();
+                contactsController.loadContacts();
             });
 
         </script>
@@ -108,7 +108,7 @@
                                 </th>
                             </tr>                 
                         </thead>
-                        <tbody>                            
+                        <tbody id="contactsTableBody" >                            
                             <tr><td>John Doe Smith</td><td>john.doe.smith@domain.com</td><td>+1 (555) 555.555.555</td></tr>
                             <tr><td>John Doe Smith</td><td>jdoe@domain.com</td><td>+1 (555) 555.555.555</td></tr>
                             <tr><td>John Doe Smith</td><td>jdoe@domain.com</td><td>+1 (555) 555.555.555</td></tr>

@@ -15,6 +15,8 @@ SQLServerConnection/Type, DataSource:MicrosoftSQLServer
 
 Login failed for user \u0027IIS APPPOOL\\DefaultAppPool\u0027
 
+- It is necessary to give access permissions to the sqlserver and database to the IIS user, In Microsoft Mysql Managemente Studio add "IIS APPPOOL\DefaultAppPool" user and give the required permissions/user roles to access the server and db.
+
 References:
 
 https://msdn.microsoft.com/en-us/library/dd936243.aspx
