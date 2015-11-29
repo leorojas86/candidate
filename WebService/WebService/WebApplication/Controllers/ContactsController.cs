@@ -71,25 +71,22 @@ namespace WebApplication.Controllers
         }
 
         // GET: Contacts/Delete/5
-        //[HttpDelete], TODO: should this be delete????
         [HttpPost]
-        //[HttpGet]
         public ActionResult Delete(int id)
         {
             try
             {
                 _repository.Delete(id);
-                return Json(new ServiceResult<String>(true, "Contact has been deleted", null)/*, JsonRequestBehavior.AllowGet*/);
+                return Json(new ServiceResult<String>(true, "Contact has been deleted", null));
             }
             catch (Exception e)
             {
-                return Json(new ServiceResult<String>(false, null, e.Message)/*, JsonRequestBehavior.AllowGet*/);
+                return Json(new ServiceResult<String>(false, null, e.Message));
             }
         }
 
         // GET: Contacts/Add/Name/Email/Phone
         [HttpPost]
-        //[HttpGet]
         public ActionResult Add(string name, string email, string phone)
         {
             try
@@ -97,17 +94,16 @@ namespace WebApplication.Controllers
                 IContact newContact = _repository.Factory.CreateContact(name, email, phone);
                 _repository.Add(newContact);
 
-                return Json(new ServiceResult<String>(true, "New contact has been added", null)/*, JsonRequestBehavior.AllowGet*/);
+                return Json(new ServiceResult<String>(true, "New contact has been added", null));
             }
             catch (Exception e)
             {
-                return Json(new ServiceResult<String>(false, null, e.Message)/*, JsonRequestBehavior.AllowGet*/);
+                return Json(new ServiceResult<String>(false, null, e.Message));
             }
         }
 
         // POST: Contacts/Update/Id/Name/Email/Phone
         [HttpPost]
-        //[HttpGet]
         public ActionResult Update(int id, string name, string email, string phone)
         {
             try
@@ -116,11 +112,11 @@ namespace WebApplication.Controllers
                 contact.Id = id;
                 _repository.Update(contact);
 
-                return Json(new ServiceResult<String>(true, "Contact has been updated", null)/*, JsonRequestBehavior.AllowGet*/);
+                return Json(new ServiceResult<String>(true, "Contact has been updated", null));
             }
             catch (Exception e)
             {
-                return Json(new ServiceResult<String>(false, null, e.Message)/*, JsonRequestBehavior.AllowGet*/);
+                return Json(new ServiceResult<String>(false, null, e.Message));
             }
         }
 
