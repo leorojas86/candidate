@@ -25,21 +25,35 @@
         <script src="scripts/Config.js"             type="text/javascript" language="javascript"></script>
         <script src="scripts/WebServiceClient.js"   type="text/javascript" language="javascript"></script>
         <script src="scripts/ContactsController.js" type="text/javascript" language="javascript"></script>
+        <script src="scripts/AddContactDialog.js"   type="text/javascript" language="javascript"></script>
+        <script src="scripts/jquery-ui.min.js"      type="text/javascript" language="javascript"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/dialogs.css" />
 
         <script type="text/javascript" language="javascript">
 
             var contactsController = null;
+            var addContactDialog   = null;
 
             $(document).ready(function() 
             {
                 //contactsController.addContact("Test", "Test", "Test");
                 contactsController = new ContactsController();
                 contactsController.loadContacts();
+
+                newContactDialog = new AddContactDialog();
+
+                $("#btnAdd").click(onAddContactButtonClick);
             });
+
+            function onAddContactButtonClick()
+            {
+                newContactDialog.show();
+            }
 
         </script>
     </head>
-    <body>  
+    <body>    
         <header id="ha-header" class="ha-header ha-header-large">
 			<div class="ha-header-perspective">
 				<div class="ha-header-front">
@@ -196,7 +210,36 @@
                     <h1>Consectetur Adipiscing</h1>
                     <ul><li><i class="fa fa-check"></i> <span>Nullam at ipsum at diam commodo egestas.</span></li><li><i class="fa fa-check"></i> <span>Curabitur blandit ligula in malesuada hendrerit.</span></li><li><i class="fa fa-check"></i> <span>Sed accumsan ligula ac nulla malesuada, et pulvinar est auctor.</span></li><li><i class="fa fa-check"></i> <span>Donec molestie ligula at diam rutrum, a viverra arcu convallis.</span></li><li><i class="fa fa-check"></i> <span>Donec molestie ligula at diam rutrum, a viverra arcu convallis.</span></li></ul>
                 </div>   
-            </div>            
-        </div>        
+            </div>           
+        </div>
+        <div> <!-- Dialogs -->
+            <div id="addContactDialog">
+                <div class="dialogGrayout"></div>
+                <div class="addContactDialogContainer">
+                    <br>
+                    <p >New Contact</p>
+                    <br>
+                    <br>
+                    <label for="name">Name</label>
+                    <br>
+                    <input type="text" name="name" id="name" class="text">
+                    <br>
+                    <br>
+                    <label for="email">Email</label>
+                    <br>
+                    <input type="text" name="email" id="email" value="" class="text">
+                    <br>
+                    <br>
+                    <label for="password">Password</label>
+                    <br>
+                    <input type="password" name="password" id="password" value="" class="text">
+                    <br>
+                    <br>
+                    <a href="javascript:void(0)" class="GenericButton" id="addContactDialogButton">
+                        <div>Add</div>
+                    </a>
+                </div>
+            </div>
+        </div>    
     </body>    
 </html>

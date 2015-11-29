@@ -1,0 +1,27 @@
+.dialogGrayout
+{
+    background-color:rgba(0, 0, 0, 0.31);
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+.addContactDialogContainer
+{
+    background-color: #00ACCF;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    height: 300px;
+    margin-left: -150px;
+    margin-top: -50px;
+}
+
+#addContactDialogButton
+{
+    width: 70px;
+    margin-left: 115;
+}
