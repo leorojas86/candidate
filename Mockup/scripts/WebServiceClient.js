@@ -17,6 +17,12 @@ WebServiceClientClass.prototype.getContacts = function(callback)
 	this.ajax('GET','Contacts/Get', callback);
 };
 
+WebServiceClientClass.prototype.addContact = function(name, email, phone, callback)
+{
+    this.ajax('POST','Contacts/Add/' + name + "/" + email + '/' + phone, callback);
+};
+
+
 WebServiceClientClass.prototype.ajax = function(method, resourceURI, callback)
 {
 	$.ajax(
