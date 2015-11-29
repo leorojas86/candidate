@@ -27,6 +27,11 @@ WebServiceClientClass.prototype.updateContact = function(id, name, email, phone,
     this.ajax('POST','Contacts/Update/' + id + '/' + name + '/' + email + '/' + phone, callback);
 };
 
+WebServiceClientClass.prototype.deleteContact = function(id, callback)
+{
+    this.ajax('POST','Contacts/Delete/' + id, callback);
+};
+
 WebServiceClientClass.prototype.ajax = function(method, resourceURI, callback)
 {
 	$.ajax(

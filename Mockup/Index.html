@@ -48,6 +48,7 @@
 
                 $("#btnAdd").click(onAddContactButtonClick);
                 $("#btnUpdate").click(onUpdateContactButtonClick);
+                $("#btnDelete").click(onDeleteContactButtonClick);
             });
 
             function onAddContactButtonClick()
@@ -71,6 +72,14 @@
             function onUpdateDialogButtonClick(contactData)
             {
                 contactsController.updateContact(contactData);
+            }
+
+            function onDeleteContactButtonClick()
+            {
+                if(contactsController.selectedContactData != null)
+                    contactsController.deleteContact(contactsController.selectedContactData);
+                else
+                    alert("Please select a contact to delete");
             }
 
         </script>

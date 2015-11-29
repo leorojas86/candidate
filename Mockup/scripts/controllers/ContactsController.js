@@ -85,3 +85,17 @@ ContactsController.prototype.onUpdateContactCallback =  function(responseData)
 	else
 		alert("Ups!, Could not connect to server, please try again");
 }
+
+ContactsController.prototype.deleteContact  =  function(contactData)
+{
+	var thisVar = this;
+	WebServiceClient.Instance.deleteContact(contactData.Id, function(responseData) { thisVar.onDeleteContactCallback(responseData) });
+}
+
+ContactsController.prototype.onDeleteContactCallback =  function(responseData)
+{
+	if(responseData.Success)
+		this.loadContacts();
+	else
+		alert("Ups!, Could not connect to server, please try again");
+}
