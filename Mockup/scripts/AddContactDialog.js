@@ -9,6 +9,7 @@ function AddContactDialog()
 
 	var thisVar = this;
 	$("#addContactDialogButton").click(function() { thisVar.onAddContactButtonClick(); });
+	$("#addContactDialogGrayout").click(function() { thisVar.hide(); });
 }
 
 AddContactDialog.prototype.onAddContactButtonClick = function()
@@ -21,7 +22,7 @@ AddContactDialog.prototype.onAddContactButtonClick = function()
 AddContactDialog.prototype.show = function(onAddClicked)
 {
 	this.onAddClicked = onAddClicked;
-	this.addContactDiv.dialog();
+	this.addContactDiv.show();
 };
 
 AddContactDialog.prototype.hide = function()
