@@ -69,7 +69,7 @@ body {
 	background: #fff;
 	text-align: left;
 	padding: 0 7%;
-	height: 50%;
+	height: 100%;
 	width: 100%;
 	margin: 0 auto;
 	position: relative;
@@ -201,11 +201,11 @@ body {
 /* Individual states */
 
 .ha-header-large {
-	height: 420px;
+	height: 200px;
 }
 
 .ha-header-small {
-	height: 220px;
+	height: 110px;
 }
 
 .ha-header-hide {
@@ -272,7 +272,7 @@ body {
 }
 
 .ha-header-rotate .ha-header-bottom {
-	top: 50%;
+	top: 100%;
 	-webkit-transition: -webkit-transform 0.5s;
 	-moz-transition: -moz-transform 0.5s;
 	transition: transform 0.5s;
@@ -282,7 +282,7 @@ body {
 }
 
 .ha-header-rotateBack {
-	height: 220px;
+	height: 110px;
 	top: 50px;
 	padding-left: 50px;
 	padding-right: 50px;
@@ -295,7 +295,7 @@ body {
 }
 
 .ha-header-rotateBack .ha-header-bottom {
-	top: 50%;
+	top: 100%;
 	-webkit-transition: -webkit-transform 0.5s;
 	-moz-transition: -moz-transform 0.5s;
 	transition: transform 0.5s;
