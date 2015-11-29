@@ -1,6 +1,7 @@
 //Variables
-//ContactsController.prototype.templateVariable = null;
-ContactsController.prototype.tableBody = null;
+ContactsController.prototype.tableBody 		 	= null;
+ContactsController.prototype.selectedContactRow = null;
+ContactsController.prototype.selectedContactId  = null;
 
 //Constructors
 function ContactsController()
@@ -38,15 +39,32 @@ ContactsController.prototype.onGetContactsCallback =  function(responseData)
 	if(responseData.Success)
 	{
 		this.tableBody.html("");
-		var thisVar = this;
+
+		var thisVar 		= this;
+		var currentRowIndex = 0;
 
 		$.each(responseData.Data, function(i, contact)
 		{
-			thisVar.tableBody.append("<tr><td>" + contact.Name + "</td><td>" + contact.Email + "</td><td>" + contact.Phone + "</td></tr>");
+			var currentTableRowId = "contactsTableRow_" + currentRowIndex;
+			thisVar.tableBody.append("<tr id = '" + currentTableRowId + "'><td>" + contact.Name + "</td><td>" + contact.Email + "</td><td>" + contact.Phone + "</td></tr>");
+			
+			$("#" + currentTableId).click(function() { thisVar.onRowClick(currentTableRowId, contact.Id); });
+
+			currentRowIndex++;
 			//alert(field);
             //$("div").append(field + " ");
         });
 	}
 	else
     	alert("Ups!, Could not connect to server, please try again");
+}
+
+ContactsController.prototype.onRowClick =  function(tableRowId, contactId)
+{
+	if(this.selectedContactRow != null)
+		this.selectedContactRow.removeClass("selectedRow");
+
+	this.selectedContactRow = $("#" + currentTableId);
+	this.selectedContactRow.addClass("selectedRow");
+	this.selectedContactId  = contactId;
 }

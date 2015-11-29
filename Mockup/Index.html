@@ -10,25 +10,26 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" language="javascript"></script>		
         <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js" type="text/javascript" language="javascript"></script>
 
-        <script src="scripts/waypoints.min.js" type="text/javascript" language="javascript"></script>
-        <script src="scripts/jsSite.js" type="text/javascript" language="javascript"></script>		
+        <script src="scripts/utils/waypoints.min.js" type="text/javascript" language="javascript"></script>
+        <script src="scripts/utils/jsSite.js" type="text/javascript" language="javascript"></script>		
 
         <!-- Header Effects - Jquery Plugin taken from: http://tympanus.net/codrops/2013/07/16/on-scroll-header-effects/ -->
         <link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
-		<script src="scripts/modernizr.custom.js" type="text/javascript" language="javascript"></script>
+		<script src="scripts/utils/modernizr.custom.js" type="text/javascript" language="javascript"></script>
         <!-- End Header Effects -->
 
         <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
 
 
-        <script src="scripts/Config.js"             type="text/javascript" language="javascript"></script>
-        <script src="scripts/WebServiceClient.js"   type="text/javascript" language="javascript"></script>
-        <script src="scripts/ContactsController.js" type="text/javascript" language="javascript"></script>
-        <script src="scripts/AddContactDialog.js"   type="text/javascript" language="javascript"></script>
-        <script src="scripts/jquery-ui.min.js"      type="text/javascript" language="javascript"></script>
+
+        <script src="scripts/Config.js"                         type="text/javascript" language="javascript"></script>
+        <script src="scripts/web-service/WebServiceClient.js"   type="text/javascript" language="javascript"></script>
+        <script src="scripts/controllers/ContactsController.js" type="text/javascript" language="javascript"></script>
+        <script src="scripts/dialogs/AddContactDialog.js"       type="text/javascript" language="javascript"></script>
 
         <link rel="stylesheet" type="text/css" href="css/dialogs.css" />
+        <link rel="stylesheet" type="text/css" href="css/contacts.css" />
 
         <script type="text/javascript" language="javascript">
 
@@ -37,7 +38,6 @@
 
             $(document).ready(function() 
             {
-                //contactsController.addContact("Test", "Test", "Test");
                 contactsController = new ContactsController();
                 contactsController.loadContacts();
 
