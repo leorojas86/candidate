@@ -30,3 +30,36 @@
     width: 70px;
     margin-left: 115;
 }
+
+#addContactDialogButton
+{
+    width: 100px;
+    margin-left: 185;
+}
+
+
+
+
+.updateContactDialogContainer
+{
+    background-color: #00ACCF;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    height: 280px;
+    margin-left: -150px;
+    margin-top: -50px;
+}
+
+#updateContactDialogButton
+{
+    width: 70px;
+    margin-left: 115;
+}
+
+#updateContactDialogButton
+{
+    width: 100px;
+    margin-left: 185;
+}

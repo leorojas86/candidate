@@ -22,6 +22,10 @@ WebServiceClientClass.prototype.addContact = function(name, email, phone, callba
     this.ajax('POST','Contacts/Add/' + name + '/' + email + '/' + phone, callback);
 };
 
+WebServiceClientClass.prototype.updateContact = function(id, name, email, phone, callback)
+{
+    this.ajax('POST','Contacts/Update/' + id + '/' + name + '/' + email + '/' + phone, callback);
+};
 
 WebServiceClientClass.prototype.ajax = function(method, resourceURI, callback)
 {

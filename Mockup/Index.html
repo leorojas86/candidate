@@ -27,21 +27,24 @@
         <script src="scripts/web-service/WebServiceClient.js"   type="text/javascript" language="javascript"></script>
         <script src="scripts/controllers/ContactsController.js" type="text/javascript" language="javascript"></script>
         <script src="scripts/dialogs/AddContactDialog.js"       type="text/javascript" language="javascript"></script>
+        <script src="scripts/dialogs/UpdateContactDialog.js"    type="text/javascript" language="javascript"></script>
 
         <link rel="stylesheet" type="text/css" href="css/dialogs.css" />
         <link rel="stylesheet" type="text/css" href="css/contacts.css" />
 
         <script type="text/javascript" language="javascript">
 
-            var contactsController = null;
-            var addContactDialog   = null;
+            var contactsController  = null;
+            var addContactDialog    = null;
+            var updateContactDialog = null;
 
             $(document).ready(function() 
             {
                 contactsController = new ContactsController();
                 contactsController.loadContacts();
 
-                addContactDialog = new AddContactDialog();
+                addContactDialog    = new AddContactDialog();
+                updateContactDialog = new UpdateContactDialog();
 
                 $("#btnAdd").click(onAddContactButtonClick);
                 $("#btnUpdate").click(onUpdateContactButtonClick);
@@ -59,12 +62,15 @@
 
             function onUpdateContactButtonClick()
             {
-                if(contactsController.selectedContactId != null)
-                {
-                    alert("Update COnectact = " + contactsController.selectedContactId);
-                }
+                if(contactsController.selectedContactData != null)
+                    updateContactDialog.show(contactsController.selectedContactData, onUpdateDialogButtonClick);
                 else
                     alert("Please select a contact to update");
+            }
+
+            function onUpdateDialogButtonClick(id, name, email, phone)
+            {
+                contactsController.updateSelectedContact(name, email, phone);
             }
 
         </script>
@@ -238,21 +244,48 @@
                     <br>
                     <label for="name">Name</label>
                     <br>
-                    <input type="text" name="name" id="name" value="Name" class="text">
+                    <input type="text" name="name" id="addContactName" value="Name" class="text">
                     <br>
                     <br>
                     <label for="email">Email</label>
                     <br>
-                    <input type="text" name="email" id="email" value="Email" class="text">
+                    <input type="text" name="email" id="addContactEmail" value="Email" class="text">
                     <br>
                     <br>
-                    <label for="password">Password</label>
+                    <label for="phone">Phone</label>
                     <br>
-                    <input type="text" name="phone" id="phone" value="Password" class="text">
+                    <input type="text" name="phone" id="addContactPhone" value="Phone" class="text">
                     <br>
                     <br>
                     <a href="javascript:void(0)" class="GenericButton" id="addContactDialogButton">
                         <div>Add</div>
+                    </a>
+                </div>
+            </div>
+            <div id="updateContactDialog" class="dialog">
+                <div id= "updateContactDialogGrayout" class="dialogGrayout"></div>
+                <div class="updateContactDialogContainer">
+                    <br>
+                    <p >Update Contact</p>
+                    <br>
+                    <br>
+                    <label for="name">Name</label>
+                    <br>
+                    <input type="text" name="name" id="updateContactName" value="Name" class="text">
+                    <br>
+                    <br>
+                    <label for="email">Email</label>
+                    <br>
+                    <input type="text" name="email" id="updateContactEmail" value="Email" class="text">
+                    <br>
+                    <br>
+                    <label for="phone">Phone</label>
+                    <br>
+                    <input type="text" name="phone" id="updateContactPhone" value="Phone" class="text">
+                    <br>
+                    <br>
+                    <a href="javascript:void(0)" class="GenericButton" id="updateContactDialogButton">
+                        <div>Update</div>
                     </a>
                 </div>
             </div>

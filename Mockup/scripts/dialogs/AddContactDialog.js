@@ -14,7 +14,7 @@ function AddContactDialog()
 
 AddContactDialog.prototype.onAddContactButtonClick = function()
 {
- 	this.onAddClicked($("#name").val(), $("#email").val(), $("#password").val());
+ 	this.onAddClicked($("#addContactName").val(), $("#addContactEmail").val(), $("#addContactPhone").val());
  	this.hide();
 }
 
