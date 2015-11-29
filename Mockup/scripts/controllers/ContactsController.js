@@ -48,11 +48,13 @@ ContactsController.prototype.onGetContactsCallback =  function(responseData)
 			var currentTableRowId = "contactsTableRow_" + currentRowIndex;
 			thisVar.tableBody.append("<tr id = '" + currentTableRowId + "'><td>" + contact.Name + "</td><td>" + contact.Email + "</td><td>" + contact.Phone + "</td></tr>");
 			
-			$("#" + currentTableId).click(function() { thisVar.onRowClick(currentTableRowId, contact.Id); });
+			$("#" + currentTableRowId).click(function() { thisVar.onRowClick(currentTableRowId, contact.Id); });
+			/*$("#" + currentTableRowId).children('td').each(function() 
+			{ 
+				this.value.click(function() { thisVar.onRowClick(currentTableRowId, contact.Id); });
+			});*/
 
 			currentRowIndex++;
-			//alert(field);
-            //$("div").append(field + " ");
         });
 	}
 	else
@@ -64,7 +66,7 @@ ContactsController.prototype.onRowClick =  function(tableRowId, contactId)
 	if(this.selectedContactRow != null)
 		this.selectedContactRow.removeClass("selectedRow");
 
-	this.selectedContactRow = $("#" + currentTableId);
+	this.selectedContactRow = $("#" + tableRowId);
 	this.selectedContactRow.addClass("selectedRow");
 	this.selectedContactId  = contactId;
 }

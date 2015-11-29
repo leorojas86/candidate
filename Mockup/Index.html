@@ -44,6 +44,7 @@
                 addContactDialog = new AddContactDialog();
 
                 $("#btnAdd").click(onAddContactButtonClick);
+                $("#btnUpdate").click(onUpdateContactButtonClick);
             });
 
             function onAddContactButtonClick()
@@ -54,6 +55,16 @@
             function onAddDialogButtonClick(name, email, phone)
             {
                 contactsController.addContact(name, email, phone);
+            }
+
+            function onUpdateContactButtonClick()
+            {
+                if(contactsController.selectedContactId != null)
+                {
+                    alert("Update COnectact = " + contactsController.selectedContactId);
+                }
+                else
+                    alert("Please select a contact to update");
             }
 
         </script>
@@ -227,17 +238,17 @@
                     <br>
                     <label for="name">Name</label>
                     <br>
-                    <input type="text" name="name" id="name" class="text">
+                    <input type="text" name="name" id="name" value="Name" class="text">
                     <br>
                     <br>
                     <label for="email">Email</label>
                     <br>
-                    <input type="text" name="email" id="email" value="" class="text">
+                    <input type="text" name="email" id="email" value="Email" class="text">
                     <br>
                     <br>
                     <label for="password">Password</label>
                     <br>
-                    <input type="text" name="phone" id="phone" value="" class="text">
+                    <input type="text" name="phone" id="phone" value="Password" class="text">
                     <br>
                     <br>
                     <a href="javascript:void(0)" class="GenericButton" id="addContactDialogButton">
