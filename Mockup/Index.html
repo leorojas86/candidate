@@ -41,14 +41,19 @@
                 contactsController = new ContactsController();
                 contactsController.loadContacts();
 
-                newContactDialog = new AddContactDialog();
+                addContactDialog = new AddContactDialog();
 
                 $("#btnAdd").click(onAddContactButtonClick);
             });
 
             function onAddContactButtonClick()
             {
-                newContactDialog.show();
+                addContactDialog.show(onAddDialogButtonClick);
+            }
+
+            function onAddDialogButtonClick(name, email, phone)
+            {
+                contactsController.addContact(name, email, phone);
             }
 
         </script>
@@ -232,7 +237,7 @@
                     <br>
                     <label for="password">Password</label>
                     <br>
-                    <input type="password" name="password" id="password" value="" class="text">
+                    <input type="text" name="phone" id="phone" value="" class="text">
                     <br>
                     <br>
                     <a href="javascript:void(0)" class="GenericButton" id="addContactDialogButton">
