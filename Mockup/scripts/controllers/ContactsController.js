@@ -72,10 +72,10 @@ ContactsController.prototype.onRowClick =  function(tableRowId, contactId, conta
 	this.selectedContactData = this.contactsData[contactDataIndex];
 };
 
-ContactsController.prototype.updateSelectedContact  =  function(name, email, phone)
+ContactsController.prototype.updateContact  =  function(contactData)
 {
 	var thisVar = this;
-	WebServiceClient.Instance.updateContact(this.selectedContactData.Id, name, email, phone, function(responseData) { thisVar.onUpdateContactCallback(responseData) });
+	WebServiceClient.Instance.updateContact(contactData.Id, contactData.Name, contactData.Email, contactData.Phone, function(responseData) { thisVar.onUpdateContactCallback(responseData) });
 }
 
 ContactsController.prototype.onUpdateContactCallback =  function(responseData)

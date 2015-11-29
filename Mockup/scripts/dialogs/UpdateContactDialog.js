@@ -1,6 +1,8 @@
 //Variables
 UpdateContactDialog.prototype.updateContactDiv = null;
-UpdateContactDialog.prototype.onUpdateClicked     = null;
+UpdateContactDialog.prototype.onUpdateClicked  = null;
+UpdateContactDialog.prototype.contactData  	   = null;
+
 
 //Constructors
 function UpdateContactDialog()
@@ -14,13 +16,18 @@ function UpdateContactDialog()
 
 UpdateContactDialog.prototype.onUpdateContactButtonClick = function()
 {
- 	this.onUpdateClicked($("#updateContactName").val(), $("#updateContactEmail").val(), $("#updateContactPhone").val());
+	this.contactData.Name  = $("#updateContactName").val();
+	this.contactData.Email = $("#updateContactEmail").val();
+	this.contactData.Phone = $("#updateContactPhone").val();
+
+ 	this.onUpdateClicked(this.contactData);
  	this.hide();
 }
 
 //Methods
 UpdateContactDialog.prototype.show = function(contactData, onUpdateClicked)
 {
+	this.contactData 	 = contactData;
 	this.onUpdateClicked = onUpdateClicked;
 
 	$("#updateContactName").val(contactData.Name);

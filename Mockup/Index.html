@@ -68,9 +68,9 @@
                     alert("Please select a contact to update");
             }
 
-            function onUpdateDialogButtonClick(id, name, email, phone)
+            function onUpdateDialogButtonClick(contactData)
             {
-                contactsController.updateSelectedContact(name, email, phone);
+                contactsController.updateContact(contactData);
             }
 
         </script>
