@@ -40,6 +40,7 @@ WebServiceClientClass.prototype.ajax = function(method, resourceURI, callback)
 	{ 
         type: method, 
         url: this.serverURL + resourceURI, 
+        cache: false,
         dataType: "json",
         data: null,
         success: function(data, status, xhr) 
