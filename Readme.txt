@@ -38,7 +38,7 @@ Setup Instructions:
     - Now the web service should be accessible at "http://localhost/contacts/" but there could be sql server connection issues.
     - if there are SQL server connection issues please edit "WebApplication/Web.config/<configuration><connectionStrings>" and "UnitTests/App.config<configuration>/<connectionStrings> as necessary to fix the connection issues.
     - I got the sql server connection issue "Login failed for user \u0027IIS APPPOOL\\DefaultAppPool\u0027", this happens because the IIS default user does not have permissions/user roles on the sql server instance to create/access the database, to fix the issue I did the following:
-    	- In "Microsoft Mysql Managemente Studio" add "IIS APPPOOL\DefaultAppPool" user and give the required permissions/user roles to access the server and create/access the database (databases "Contacts" and "ContactsTestUnits" are automatically created by the entity framework in the SQL Server instance).
+    	- In "Microsoft Mysql Managemente Studio" add "IIS APPPOOL\DefaultAppPool" user and give the required permissions/user roles to access the server and create/access the database ("Contacts" and "ContactsTestUnits" databases are automatically created by the entity framework in the SQL Server instance).
 
 - Publish the "Mockup" web service client application.
 	- Make a new folder at "C:\inetpub\wwwroot\mockup" and copy the content from "Candidate\Mockup" to the new folder.
