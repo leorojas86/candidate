@@ -16,6 +16,17 @@ Develop Environment:
 
 Setup Instructions:
 
+- Connect the "WebApplication" and "UnitTests" to SQL Server instance:
+	- Open Visual Studio and open the window "SQL Server Object Explorer".
+	- Right click on the window and select "Add SQL Server...".
+	- On "Server name:" combobox "<browse for more..>".
+	- Find and select the SQL Server Local Server.
+	- The SQL server connection strings of the projects are at "WebApplication/Web.config/<configuration><connectionStrings>" and "UnitTests/App.config<configuration>/<connectionStrings>.
+
+- Run the Unit Tests
+	- Open the Visual Studio and then open the "Test Explorer" window, it is at the menu option "Test/Window/TestExplorer".
+	- Click "Run All" button.
+
 - Publish "WebApplication" APS.net MVC application on IIS server:
 	- Open "Internet Information Services (IIS) Manager" application.
     - Right click on "Default Web Site" and select "Add Application...".
@@ -24,34 +35,14 @@ Setup Instructions:
     - Open the "Candidate\WebService\WebService\WebService.sln" Visual Studio solution.
     - Right click on "WebApplication" project and select "Publish...".
     - Publish the "WebApplication" to "C:\inetpub\wwwroot\contacts" folder.
+    - Now the web service should be accessible at "http://localhost/contacts/" but there could be sql server connection issues.
+    - if there are SQL server connection issues please "WebApplication/Web.config/<configuration><connectionStrings>" and "UnitTests/App.config<configuration>/<connectionStrings> as necessary to fix the connection issues.
+    - I got the sql server connection issue "Login failed for user \u0027IIS APPPOOL\\DefaultAppPool\u0027", this happens because the IIS default user do not have permissions/user roles on the sql server instance to create/access the database, to fix the issue I did the following:
+    	- In "Microsoft Mysql Managemente Studio" add "IIS APPPOOL\DefaultAppPool" user and give the required permissions/user roles to access the server and create/access the database.
 
-- Connect the "WebApplication" and "UnitTests" to SQL Server instance:
-	- Open Visual Studio and open the window "SQL Server Object Explorer".
-	- Right click on the window and select "Add SQL Server...".
-	- On "Server name:" combobox "<browse for more..>".
-	- Find and select the SQL Server Local Server.
-	- The SQL server connection strings of the projects are at "WebApplication/Web.config/<configuration><connectionStrings>" and "UnitTests/App.config<configuration>/<connectionStrings>".
+- Publish the "Mockup" web service client application.
+	- Make a new folder at "C:\inetpub\wwwroot\mockup" and copy the content from "Candidate\Mockup" to the new folder.
+	- Now the mockup application should be accessible at "http://localhost/mockup/" and should connect to the "http://localhost/contacts/" web service.
+	- Also there is a file that automatically copies the content from "C:\inetpub\wwwroot\mockup" to "Candidate\Mockup" the file is at "Candidate\Scripts\PublishMockup.cmd", I had to edit the folder user permission on "C:\inetpub\wwwroot" to let the "PublishMockup.cmd" copy the content automatically.
 
-SQLExpress
-
-sa -> pass
-
-SQL SErver Object Explorer/Add SQL Server.../ServerName:Browse/SQLServerExpress/Autentication:Windows Autentication
-
-SQLServerConnection/Type, DataSource:MicrosoftSQLServer 
-
-Login failed for user \u0027IIS APPPOOL\\DefaultAppPool\u0027
-
-- It is necessary to give access permissions to the sqlserver and database to the IIS user, In Microsoft Mysql Managemente Studio add "IIS APPPOOL\DefaultAppPool" user and give the required permissions/user roles to access the server and db.
-
-References:
-
-https://msdn.microsoft.com/en-us/library/dd936243.aspx
-http://plugins.jquery.com/soap/
-https://msdn.microsoft.com/en-us/library/ff649690.aspx
-http://blog.falafel.com/implement-step-step-generic-repository-pattern-c/
-http://www.asp.net/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
-http://www.codeproject.com/Articles/29271/Design-pattern-Inversion-of-control-and-Dependency
-http://www.codeproject.com/Articles/29444/Design-Pattern-IOC-and-DI
-http://www.codeproject.com/Articles/135114/Dependency-Injection-with-StructureMap-in-ASP-NET
 
